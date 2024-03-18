@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('information', function (Blueprint $table) {
             $table->id();
-            $table->integer('matriculation');
+            $table->string('matriculation')->unique();
             $table->string('name');
             $table->string('gender', 1);
             $table->date('admission_date')->format('d-m-Y');
@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('rg', 11)->unique();
             $table->string('issue_rg', 16);
             $table->string('uf_rg', 16);
-            $table->string('mother_name');
-            $table->string('father_name');
+            $table->string('mother_name')->nullable();
+            $table->string('father_name')->nullable();
             $table->string('birthplace');
             $table->string('nationality');
             $table->string('nationality_uf', 2);

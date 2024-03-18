@@ -24,6 +24,7 @@ class Information extends Model
         'father_name',
         'birthplace',
         'nationality',
+        'nationality_uf',
         'blood_type',
         'identification_number',
         'issue_date',
