@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Staffing;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Information extends Model
 {
@@ -36,6 +37,32 @@ class Information extends Model
         'created_at',
         'updated_at'
     ];
+
+    protected $dates = [
+        'admission_date',
+        'birth_date',
+        'issue_date',
+    ];
+
+    public function getAdmissionDateAttribute($value)
+    {
+        return $this->formatDate($value);
+    }
+
+    public function getBirthDateAttribute($value)
+    {
+        return $this->formatDate($value);
+    }
+
+    public function getIssueDateAttribute($value)
+    {
+        return $this->formatDate($value);
+    }
+
+    protected function formatDate($date)
+    {
+        return Carbon::parse($date)->format('d/m/Y');
+    }
 
     public function staffing()
     {
